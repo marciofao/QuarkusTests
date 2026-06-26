@@ -26,8 +26,9 @@ public class UNIPDSResource {
     }
 
     @PUT
-    public void setI(int i){
-        this.i = i;
+    @Consumes(MediaType.TEXT_PLAIN)
+    public void setI(String value){
+        this.i = Integer.parseInt(value);
     }
 
     @DELETE

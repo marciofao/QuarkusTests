@@ -14,9 +14,9 @@ public class ReadinessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call(){
         if(starWarsService.getStarships().contains(StarWarsService.MSG_ERROR)){
-            return HealthCheckResponse.down("Error in StarWarsService")
+            return HealthCheckResponse.down("Error in StarWarsService");
         }else{
-            return HealthCheckResponse.up("OK")
+            return HealthCheckResponse.up("OK");
         }
     }
 }
