@@ -16,6 +16,12 @@ public class PessoaResource {
         return Pessoa.listAll();
     }
 
+    @GET
+    @Path("/findByAnoNascimento")
+    public List<Pessoa> findByAnoNascimento(@QueryParam("anoNascimento") int ano){
+        return Pessoa.findByAnoNascimento(ano);
+    }
+
     @POST
     @Transactional
     public Pessoa AddPessoa(Pessoa pessoa){
@@ -23,5 +29,22 @@ public class PessoaResource {
         pessoa.persist();
 
         return pessoa;
+    }
+
+    @PUT
+    @Transactional
+    public Pessoa updatePessoa(Pessoa pessoa){
+        Pessoa p = Pessoa.findById(pessoa.id);
+        p.nome = pessoa.nome;
+        p.anoNascimento = pessoa.anoNascimento;
+        p.persist();
+
+        return p;
+    }
+
+    @DELETE
+    @Transactional
+    public void deletePessoa(int id){
+        Pessoa.deleteById(id);
     }
 }
