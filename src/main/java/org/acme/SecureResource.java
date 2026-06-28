@@ -31,4 +31,8 @@ public class SecureResource {
  Invoke-WebRequest -Uri "http://localhost:8080/api/secure/claim" `
     -Headers @{ Authorization = "Bearer $token" } `
     -Method Get
+
+
+    use Jaeger for tests:
+    docker run --name=jaeger -d -p 16686:16686 -p 4317:4317 -e COLLECTOR-OTLP-ENABLED=true jaegertracing/all-in-one:latest
 * */
